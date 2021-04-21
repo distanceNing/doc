@@ -4,7 +4,7 @@ MYSQL主从复制
 
 主从复制 读写分离
 
-![img](C:\Users\ninggyang\Documents\study_doc\v2-de44ec1348280cd6c709ffde0c109b79_720w.png)
+![img](https://docimg2.docs.qq.com/image/sexNQqoqdE0ZEGvCyM4z5w?w=739&h=311)
 
 
 
