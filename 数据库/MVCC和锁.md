@@ -121,6 +121,14 @@ ReadView的生成：
 
 * 一个 bug：唯一索引上的范围查询会访问到不满足条件的第一个值为止。
 
+````
+select * from t where id > 10 and id <= 15 for update;
+````
+
+
+
+
+
 
 
 #### 数据库的三种写操作：

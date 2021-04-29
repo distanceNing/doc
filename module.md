@@ -1,6 +1,6 @@
 #### 模块划分以及模块复用
 
-<img src="C:\Users\ninggyang\AppData\Roaming\Typora\typora-user-images\image-20200526094405629.png" alt="image-20200526094405629" style="zoom:80%;" />
+<img src="picture/组成.png" alt="image-20200526094405629" style="zoom:80%;" />
 
 
 
@@ -20,7 +20,7 @@
   * 尽量把网状结构转化为层次结构，模块结构层次化是简化模块依赖关系的有力手段。
     * 层与层之间自上而下的依赖
 
-  <img src="C:\Users\ninggyang\AppData\Roaming\Typora\typora-user-images\image-20200526095239534.png" alt="image-20200526095239534" style="zoom:80%;" />
+  <img src="picture/image-20200526095239534.png" alt="image-20200526095239534" style="zoom:80%;" />
 
 #### 打造可扩展的模块体系
 
@@ -57,7 +57,7 @@
 
      * 地图搜索、运力调度、订单支付，都是各个业务线都需要的基础和通用的业务能力，当我们增加新的业务线时，还是离不开这些基础能力。
 
-       <img src="C:\Users\ninggyang\AppData\Roaming\Typora\typora-user-images\image-20200526100159455.png" alt="image-20200526100159455" style="zoom:80%;" />
+       <img src="picture/image-20200526100159455.png" alt="image-20200526100159455" style="zoom:80%;" />
 
 * 经验：
   
