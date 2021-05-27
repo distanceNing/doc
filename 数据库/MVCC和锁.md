@@ -127,10 +127,6 @@ select * from t where id > 10 and id <= 15 for update;
 
 
 
-
-
-
-
 #### 数据库的三种写操作：
 
 一条数据库语句执行使用到什么锁，有很多条件制约，比方说：
