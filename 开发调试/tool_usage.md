@@ -17,3 +17,40 @@
        0.226567038 seconds time elapsed
 ````
 
+
+
+查看dns解析服务器配置
+
+````
+cat /etc/resolv.conf
+````
+
+
+
+````
+traceroute --tcp -p 80 -n baidu.com
+````
+
+查找：
+
+````
+find ./ -mtime +30 -type f -name '*iap*'
+````
+
+查看core文件路径
+
+````
+cat /proc/sys/kernel/core_pattern
+````
+
+存储问题排查：
+
+````
+iotop
+iostat
+blktrace
+block_dump
+````
+
+du与df查看磁盘空间不一致
+

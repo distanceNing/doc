@@ -6,3 +6,7 @@ lua脚本：
  eval "return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}" 2 username age jack 20
 ````
 
+SkipList:
+
+适合范围查找 O(logN)
+

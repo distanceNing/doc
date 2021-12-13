@@ -2,7 +2,12 @@
 git submodule update --init --recursive
 
 设置默认密码
+
+````
 git config --global credential.helper store
+````
+
+
 
 https://git-scm.com/book/zh/v1/Git-%E5%88%86%E6%94%AF-%E4%BD%95%E8%B0%93%E5%88%86%E6%94%AF
 
@@ -30,6 +35,12 @@ git clean -d -fx
 
 删除本地分支：
 git branch -d 
+
+token登录：
+
+````
+git remote set-url origin https://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@github.com/distanceNing/testapp.git
+````
 
 取消add
  git rm -r --cached
@@ -73,7 +84,6 @@ git commit -m "合并信息"
 
 * 使用 ^ 向上移动 1 个提交记录
 * 使用 ~<num> 向上移动多个提交记录，如 ~3
-  
 
 # 本地栈式提交
 
