@@ -54,3 +54,16 @@ block_dump
 
 du与df查看磁盘空间不一致
 
+
+
+取出某个key对应的value：
+
+````
+ head -1 | awk -F"key=" '{print $2}' | awk -F"&" '{print $1}'
+````
+
+去重：
+
+````
+| sort | uniq -c
+````

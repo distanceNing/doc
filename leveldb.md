@@ -1,4 +1,4 @@
-存储引擎：
+ 存储引擎：
 
 #### BigTable：
 
@@ -28,9 +28,11 @@
 
 ##### WriteBatch : 写操作集合
 
-​	The `WriteBatch` holds a sequence of edits to be made to the database.
+````
+The `WriteBatch` holds a sequence of edits to be made to the database.
 
-​	数据存储格式:|seq|type|key_size|key|value_size|value|
+数据存储格式:|seq|type|key_size|key|value_size|value|
+````
 
 ##### InternalKey
 
@@ -47,10 +49,16 @@ user_key|seq(7byte)|type(1byte)
 
 ````
 
-
 ​	
-​	LookUpKey
-​		user_key_size|key|seq + type 8byte
+
+##### LookUpKey
+
+````
+user_key_size|key|seq + kValueTypeForSeek 8byte
+var int32
+````
+
+​		
 
 
 
@@ -61,6 +69,12 @@ user_key|seq(7byte)|type(1byte)
 
 ````
 | crc (4byte)|length(2byte)|type(1byte)|record|
+````
+
+##### SkipList
+
+````
+线程安全的跳跃表
 ````
 
 ##### MemTable:
@@ -150,11 +164,17 @@ f->allowed_seeks--
     bool RecordReadSample(Slice key);
 	记录样本key，在读取 config::kReadBytesPeriod 个字节后进行样本采集。
 	返回true代表需要触发compaction。
+        
+    查找一个key，需要查找多个sst文件的话，需要进行合并.
+调用ForEachOverlapping实现。
 
+````
+
+###### ForEachOverlapping
+
+````c++
+ForEachOverlapping(Slice user_key, Slice internal_key, void* arg,bool (*func)(void*, int, FileMetaData*))
 遍历每层和key有重合的文件，并执行回调函数func.
-ForEachOverlapping(Slice user_key, Slice internal_key, void* arg,
-                                 bool (*func)(void*, int, FileMetaData*))
-
 
 ````
 
@@ -298,7 +318,8 @@ void Finalize(Version* v);
 SetupOtherInputs：
 	找到下一层与需要合并的文件。
 	优化点：
-		找到level以及level+1层最小以及最大值，查找level层与all_start,all_limit重合的文件，记为expand0，expand0的文件数大于之前的文件数，且在level+1层需要合并的文件数不变的情况下，扩展level需要合并的文件。
+		找到level以及level+1层最小以及最大值，查找level层与all_start,all_limit重合的文件，记为expand0，
+		expand0的文件数大于之前的文件数，且在level+1层需要合并的文件数不变的情况下，扩展level需要合并的文件。
 		
 	设置合并完的这一层的合并点（compact pointer）
 ```
@@ -326,7 +347,7 @@ AddBoundaryInputs
 
 ```c++
 压缩imm MemTable
-调用 WriteLevel0Table
+调用 WriteLevel0Table,将immtable写入第0层。
 Status WriteLevel0Table(MemTable* mem, VersionEdit* edit, Version* base);
 
 ```

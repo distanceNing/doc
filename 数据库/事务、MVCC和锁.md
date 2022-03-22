@@ -1,4 +1,4 @@
-### 事务：
+## 事务：
 
 ​	需要保证`原子性`、`隔离性`、`一致性`和`持久性`的一个或多个数据库操作称之为一个`事务` 。
 
@@ -12,6 +12,10 @@
    1. 同样的查询条件，多次查询，幻读只是重点强调了读取到了之前读取没有获取到的记录。区间的概念。
 
 ![img](https://docimg1.docs.qq.com/image/bqt2gnQCApKaoN_AJBChXQ?w=886&h=235)
+
+information_schema 库的 innodb_trx
+
+
 
 #### MVCC
 
@@ -48,7 +52,7 @@ ReadView的生成：
 
 
 
-#### 锁
+## 锁
 
 ##### 锁结构：
 
@@ -77,19 +81,26 @@ ReadView的生成：
   SELECT ... FOR UPDATE;
   ```
 
-##### Innodb的表级锁：
+### Innodb的表级锁：
 
-1、表级别的`IS锁`、`IX锁`
+#### 1、类型：
+
+* 表锁
+* MDL (metadata lock)
+  * 保证读写的正确，防止DDL(数据定义语言)和DML（数据操作语言）并发的冲突。
+  * 读写冲突，读不冲突
+
+2、表级别的`IS锁`、`IX锁`
 
 ​	为了更方便的判断表中是否有记录加锁。
 
-2、AUTO-INC
+3、AUTO-INC
 
 ​	为某个列加上 `AUTO_INCREMENT`属性时，在插入新数据时，会对表加`AUTO-INC`锁。
 
 ​	获取到`AUTO_INCREMENT`属性列的值后，就可以释放锁。
 
-#### innodb 行级锁：
+### innodb 行级锁：
 
 ##### 1、单行锁：
 
