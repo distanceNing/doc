@@ -67,3 +67,11 @@ du与df查看磁盘空间不一致
 ````
 | sort | uniq -c
 ````
+
+tcpdump:
+
+````
+抓请求地址为172.24.250.170的报文
+tcpdump -i any dst host 172.24.250.170  -w ./curl.cap
+
+````

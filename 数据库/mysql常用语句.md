@@ -13,6 +13,9 @@ update  t set field = concat(field,"xxx");
 
 ````
 select @@transaction_isolation;
+
+设置数据库隔离级别：
+set session transaction isolation level REPEATABLE READ;
 ````
 
 创建用户：
